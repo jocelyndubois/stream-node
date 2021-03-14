@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/splits.css">
+</head>
+<body>
+	<div class="container">
+		<div id="splits">
+			<span>SPLITS</span>
+		</div>
+	</div>
+</body>
+
+<script>
+	const splits = document.querySelector('#splits');
+
+	nodecg.listenFor('showPB', async infos => {
+		splits.style.backgroundColor = '#' + infos.color;
+	})
+</script>
+</html>

@@ -1,0 +1,27 @@
+html,body {
+	background-color: transparent;
+	color: #ffffff;
+}
+.container {
+	overflow: hidden;
+	width: 300px;
+	height: 60px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#splits {
+	position: absolute; left: 0; top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #FF0000;
+	color: white;
+	display: flex;
+	font-size: 3em;
+}
+
+#splits>span {
+	margin: 0 auto;
+	text-align: center;
+}

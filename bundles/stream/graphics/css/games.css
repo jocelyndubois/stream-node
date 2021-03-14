@@ -1,0 +1,32 @@
+html,body {
+	height:100%;
+	/*background-color: #B5B7B4;*/
+	overflow: hidden;
+}
+.container {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: flex-start;
+	height: 250px;
+}
+
+.svgGame {
+	flex: 1;
+	width: 10%;
+	margin: 0 auto;
+	text-align: center;
+	fill: white;
+	fill-opacity: 0.4;
+}
+
+.svgPath.selected {
+	fill: black;
+	fill-opacity: 1;
+}
+
+.odd {
+	align-self: center;
+}

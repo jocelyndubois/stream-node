@@ -38,3 +38,10 @@ function fetchRunnersList() {
 		}
 	);
 }
+
+function sendGameGlyph(game) {
+	nodecg.sendMessage(
+		'sendGames',
+		game
+	);
+}
