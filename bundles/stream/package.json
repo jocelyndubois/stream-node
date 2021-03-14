@@ -48,7 +48,8 @@
         "file": "player.html",
         "width": 1920,
         "height": 1080
-      },      {
+      },
+      {
         "file": "splits.html",
         "width": 60,
         "height": 300
@@ -122,6 +123,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bower-npm-resolver": "^0.11.0",
-    "nodecg-utility-obs": "^6.1.7"
+    "nodecg-utility-obs": "^6.1.7",
+    "node-ipc": "^9.1.1"
   }
 }

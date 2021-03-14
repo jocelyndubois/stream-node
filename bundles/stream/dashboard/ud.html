@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="container">
+	<nodecg-livesplit></nodecg-livesplit>
 	<form class="row g-3">
 		<div class="col-md-6">
 			<label for="seasonInput" class="form-label">Season :</label>
@@ -168,6 +169,14 @@
 	const PbDarkTime = document.querySelector('#PbDarkTime');
 
 	$( document ).ready(function() {
+		nodecg.sendMessage(
+			'livesplit:connect',
+			{
+				ip: '192.168.0.47',
+				port: '16834'
+			}
+		);
+
 		fetchGamesButton.onclick = () => {
 			nodecg.sendMessage(
 				'fetchGamesList',
@@ -200,6 +209,8 @@
 					}
 				}
 			);
+
+			nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'starttimer');
 		};
 		startDark.onclick = () => {
 			nodecg.sendMessage(
@@ -220,6 +231,8 @@
 					}
 				}
 			);
+
+			nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'starttimer');
 		};
 		startBoth.onclick = () => {
 			nodecg.sendMessage(
@@ -240,9 +253,13 @@
 					}
 				}
 			);
+
+			nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'starttimer');
 		};
 		stop.onclick = () => {
 			nodecg.sendMessage('stopTimer');
+
+			nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'reset');
 		};
 
 		//[GAME INFOS]
@@ -421,7 +438,6 @@
 			gameFewTimeDark.dataset.seconds = infos.dark.fewestTime;
 		});
 		fetchPbsReplicant.on('change', (PB) => {
-			console.log(PB);
 			if (!PB) {
 				return;
 			}

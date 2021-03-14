@@ -4,13 +4,14 @@ html,body {
 	overflow: hidden;
 }
 .container {
+	width: 1024px;
 	overflow: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
 	display: flex;
 	align-items: flex-start;
-	height: 250px;
+	height: 200px;
 }
 
 .svgGame {
