@@ -1,0 +1,171 @@
+{
+  "name": "stream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "nodecg": {
+    "compatibleRange": ">=0.9",
+    "dashboardPanels": [
+      {
+        "name": "Players",
+        "title": "Players",
+        "width": 7,
+        "file": "players.html",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "Clips",
+        "title": "Clip",
+        "width": 3,
+        "file": "clips.html",
+        "headerColor": "#525F78",
+        "workspace": "Full page"
+      },
+      {
+        "name": "Games",
+        "title": "Games",
+        "width": 6,
+        "file": "games.html",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "Tournaments",
+        "title": "Tournaments",
+        "width": 3,
+        "file": "tournaments.html",
+        "headerColor": "#525F78",
+        "workspace": "Full page"
+      },
+      {
+        "name": "Backgrounds",
+        "title": "Backgrounds",
+        "width": 3,
+        "file": "backgrounds.html",
+        "headerColor": "#525F78",
+        "workspace": "Full page"
+      },
+      {
+        "name": "Transition",
+        "title": "Transition",
+        "width": 6,
+        "file": "transition.html",
+        "headerColor": "#525F78",
+        "workspace": "Full page"
+      },
+      {
+        "name": "OBS",
+        "title": "OBS",
+        "width": 3,
+        "file": "obs.html",
+        "headerColor": "#525F78",
+        "workspace": "EXTERNAL"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "player-1.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "player-2.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "player-3.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "player-4.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "game.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "chrono.html",
+        "width": 256,
+        "height": 256
+      },
+      {
+        "file": "commentators.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "background.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "card.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "tournament.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "clip.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "transition.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "images",
+        "title": "images",
+        "allowedTypes": [
+          "png",
+          "jpg"
+        ]
+      },
+      {
+        "name": "background",
+        "title": "background",
+        "allowedTypes": [
+          "png",
+          "jpg"
+        ]
+      },
+      {
+        "name": "clips",
+        "title": "clips",
+        "allowedTypes": [
+          "webm",
+          "mp4",
+          "mov"
+        ]
+      },
+      {
+        "name": "utils",
+        "title": "Utils",
+        "allowedTypes": [
+          "webm"
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bower-npm-resolver": "^0.11.0",
+    "nodecg-utility-obs": "^6.1.7"
+  }
+}

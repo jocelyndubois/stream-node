@@ -1,4 +1,4 @@
-# NodeCG - UD
+# NodeCG - Stream
 
 Docs :
 - [NodeCG](https://nodecg.dev/)
@@ -9,7 +9,7 @@ To install :
 npm install
 cd bundles/nodecg-speedcontrol
 npm install
-cd ../UD
+cd ../stream
 npm install
 bower install --save npm:nodecg-widget-obs
 ```
