@@ -41,18 +41,31 @@
         "file": "obs.html",
         "headerColor": "#525F78",
         "workspace": "EXTERNAL"
+      },
+      {
+        "name": "LiveSplit",
+        "title": "LiveSplit",
+        "width": 3,
+        "file": "livesplit.html",
+        "headerColor": "#525F78",
+        "workspace": "EXTERNAL"
       }
     ],
     "graphics": [
       {
         "file": "player.html",
-        "width": 1920,
+        "width": 1775,
         "height": 1080
       },
       {
         "file": "splits.html",
         "width": 60,
         "height": 300
+      },
+      {
+        "file": "logo.html",
+        "width": 1920,
+        "height": 1080
       },
       {
         "file": "games.html",

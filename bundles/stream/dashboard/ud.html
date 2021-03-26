@@ -102,12 +102,7 @@
 	</form>
 
 	<div class="row">
-		<div class="col-3">
-			<h4>Game</h4>
-			<a class="btn btn-light" id="sendLight">Send</a>
-			<a class="btn btn-dark" id="sendDark">Send</a>
-		</div>
-		<div class="col-5">
+		<div class="col-7">
 			<h4>PB</h4>
 			<a class="btn btn-light" id="sendPBLight">Send</a>
 			<a class="btn btn-dark" id="sendPBDark">Send</a>
@@ -119,8 +114,8 @@
 			<a class="btn btn-light" id="startLight"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26"><polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69"/></svg></a>
 			<a class="btn btn-dark" id="startDark"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26"><polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69" fill="#FFFFFF"/></svg></a>
 			<a class="btn btn-secondary" id="startBoth"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26"><polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69" fill="#FFFFFF"/></svg></a>
+			<td><a class="btn btn-danger" data-todo="pause" id="pause"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 36 36"><path d="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26"/></svg></a></td>
 			<a class="btn btn-danger" id="stop"><svg xmlns="http://www.w3.org/2000/svg" width="13px" height="13px" viewBox="0 0 100 100"><path d="M 10 10 H 90 V 90 H 10 L 10 10"/></svg></a>
-
 		</div>
 	</div>
 
@@ -133,8 +128,6 @@
 	const seasonInput = document.querySelector('#seasonInput');
 	const fetchGamesButton = document.querySelector('#fetchGamesButton');
 	const sendToTwitch = document.querySelector('#sendToTwitch');
-	const sendLight = document.querySelector('#sendLight');
-	const sendDark = document.querySelector('#sendDark');
 
 	const sendPBLight = document.querySelector('#sendPBLight');
 	const sendPBDark = document.querySelector('#sendPBDark');
@@ -144,6 +137,7 @@
 	const startLight = document.querySelector('#startLight');
 	const startDark = document.querySelector('#startDark');
 	const startBoth = document.querySelector('#startBoth');
+	const pause = document.querySelector('#pause');
 	const stop = document.querySelector('#stop');
 
 	const gameName = document.querySelector('#gameName');
@@ -169,14 +163,6 @@
 	const PbDarkTime = document.querySelector('#PbDarkTime');
 
 	$( document ).ready(function() {
-		nodecg.sendMessage(
-			'livesplit:connect',
-			{
-				ip: '192.168.0.47',
-				port: '16834'
-			}
-		);
-
 		fetchGamesButton.onclick = () => {
 			nodecg.sendMessage(
 				'fetchGamesList',
@@ -261,29 +247,20 @@
 
 			nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'reset');
 		};
+		pause.onclick = () => {
+			if ('pause' === pause.dataset.todo) {
+				nodecg.sendMessage('pauseTimer');
 
-		//[GAME INFOS]
-		sendLight.onclick = () => {
-			nodecg.sendMessage(
-				'sendGameInfos',
-				{
-					name: gameName.value,
-					category: gameCategoryLight.value,
-					path: gameSvgPath.getAttribute('d'),
-					width: gameSvg.dataset.width,
-				}
-			);
-		};
-		sendDark.onclick = () => {
-			nodecg.sendMessage(
-				'sendGameInfos',
-				{
-					name: gameName.value,
-					category: gameCategoryDark.value,
-					path: gameSvgPath.getAttribute('d'),
-					width: gameSvg.dataset.width,
-				}
-			);
+				nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'pause');
+
+				pause.dataset.todo = 'resume';
+			} else {
+				nodecg.sendMessage('resumeTimer');
+
+				nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'resume');
+
+				pause.dataset.todo = 'pause';
+			}
 		};
 
 		//[PB]
@@ -296,10 +273,14 @@
 					category: gameCategoryLight.value,
 					score: parseInt(PbLightScore.value),
 					time: PbLightTime.value,
+					glyph: {
+						width: gameSvg.dataset.width,
+						path: gameSvgPath.getAttribute('d')
+					}
 				}
 			);
 
-			sendGameGlyph(gameSelect.value);
+			sendGameGlyph(gameSelect.value, seasonInput.value);
 		};
 		sendPBDark.onclick = () => {
 			nodecg.sendMessage(
@@ -313,7 +294,7 @@
 				}
 			);
 
-			sendGameGlyph(gameSelect.value);
+			sendGameGlyph(gameSelect.value, seasonInput.value);
 		};
 		sendPBAgg.onclick = () => {
 			let lightScore = parseInt(PbLightScore.value);
@@ -342,7 +323,7 @@
 				}
 			);
 
-			sendGameGlyph(gameSelect.value);
+			sendGameGlyph(gameSelect.value, seasonInput.value);
 		};
 		hidePB.onclick = () => {
 			nodecg.sendMessage(

@@ -14,7 +14,4 @@ const gameInfos = nodecg.Replicant('getGameInfos');
 
 const fetchGamesListReplicant = nodecg.Replicant('fetchGamesList');
 
-//[GAMES/SEASON Modifs]
-// game.on('change', (newGame) => {
-// 	fetchPBList();
-// });
+const livesplitConnection = nodecg.Replicant('livesplitConnected');
