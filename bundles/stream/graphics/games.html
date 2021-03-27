@@ -76,7 +76,7 @@
 			let display = eval('display' + (i+1));
 			let path = eval('path' + (i+1));
 
-			display.setAttribute('viewBox', '0,0,' + glyphs[i].glyph.width + ',' + glyphs[i].glyph.width);
+			// display.setAttribute('viewBox', '0,0,' + glyphs[i].glyph.width + ',' + glyphs[i].glyph.width);
 			path.setAttribute('d', glyphs[i].glyph.path);
 
 			if (game === glyphs[i].name) {
