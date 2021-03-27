@@ -58,12 +58,32 @@
         "height": 1080
       },
       {
+        "file": "player-GBA.html",
+        "width": 982,
+        "height": 754
+      },
+      {
+        "file": "player-genesis.html",
+        "width": 1302,
+        "height": 990
+      },
+      {
+        "file": "player-gamecube.html",
+        "width": 958,
+        "height": 814
+      },
+      {
         "file": "splits.html",
         "width": 60,
         "height": 300
       },
       {
         "file": "logo.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "spotify.html",
         "width": 1920,
         "height": 1080
       },

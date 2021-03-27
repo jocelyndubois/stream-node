@@ -17,7 +17,6 @@
 	const logo = document.querySelector('#logo');
 
 	nodecg.listenFor('sendLogo', (infos) => {
-console.log(infos);
 		logo.src = 'img/games/UD' + infos.season + '/' + string_to_slug(infos.game) + '.png';
 	});
 </script>

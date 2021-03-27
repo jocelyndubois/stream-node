@@ -59,8 +59,6 @@ module.exports = function (nodecg) {
 								time: PB.time
 							}
 						}
-
-
 					}
 				})
 			}

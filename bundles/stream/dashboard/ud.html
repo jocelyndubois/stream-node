@@ -291,6 +291,10 @@
 					category: gameCategoryDark.value,
 					score: parseInt(PbDarkScore.value),
 					time: PbDarkTime.value,
+					glyph: {
+						width: gameSvg.dataset.width,
+						path: gameSvgPath.getAttribute('d')
+					}
 				}
 			);
 
@@ -320,6 +324,10 @@
 					category: gameCategoryDark.value,
 					score: score,
 					time: time,
+					glyph: {
+						width: gameSvg.dataset.width,
+						path: gameSvgPath.getAttribute('d')
+					}
 				}
 			);
 

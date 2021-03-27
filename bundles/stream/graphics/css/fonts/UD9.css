@@ -44,12 +44,12 @@
 }
 
 @font-face {
-	font-family: hamster-ball;
-	src: url('../../font/games/UD9/hamster-ball.TTF');
+	font-family: hamsterball;
+	src: url('../../font/games/UD9/hamsterball.TTF');
 }
 
-.hamster-ball {
-	font-family: hamster-ball, monospace;
+.hamsterball {
+	font-family: hamsterball, monospace;
 }
 
 @font-face {
