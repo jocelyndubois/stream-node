@@ -5,9 +5,6 @@
 /build/node_modules
 npm-debug.log
 
-bundles/UD/bower_components
-bundles/UD/node_modules
-
 # Datastores
 /db/**
 

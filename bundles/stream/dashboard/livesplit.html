@@ -32,6 +32,9 @@
 	</div>
 </body>
 <script>
+	const ip = document.querySelector('#ip');
+	const port = document.querySelector('#port');
+
 	const connect = document.querySelector('#connect');
 	const disconnect = document.querySelector('#disconnect');
 
@@ -39,8 +42,8 @@
 		nodecg.sendMessage(
 			'livesplit:connect',
 			{
-				ip: '192.168.0.47',
-				port: '16834'
+				ip: ip.value,
+				port: port.value
 			}
 		);
 	};
@@ -49,8 +52,8 @@
 		nodecg.sendMessage(
 			'livesplit:disconnect',
 			{
-				ip: '192.168.0.47',
-				port: '16834'
+				ip: ip.value,
+				port: port.value
 			}
 		);
 	};

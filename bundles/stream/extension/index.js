@@ -1,6 +1,5 @@
 "use strict";
 
-const {OBSUtility} = require('nodecg-utility-obs');
 const axios = require('axios');
 
 const ipc = require("node-ipc");
@@ -15,24 +14,11 @@ ipc.config.retry = 1000;
 ipc.config.maxRetries = serverRetries;
 
 module.exports = function (nodecg) {
-	// require('./livesplit');
+	const runnerName = nodecg.Replicant('runnerName');
+	let udRunner = nodecg.bundleConfig.udRunner;
+	runnerName.value = nodecg.bundleConfig.udRunner;
 
-	const obs = new OBSUtility(nodecg);
 	const graphUrl = 'https://www.ultimedecathlon.com/graphql';
-
-	nodecg.listenFor('loadRTMP', async query => {
-		try {
-			await obs.send("SetSourceSettings", {
-				sourceName: 'player-' + query.id + '-rtmp',
-				sourceSettings: {
-					is_local_file: false,
-					input: "rtmp://stream.ultimedecathlon.com/stream/" + query.runner,
-				},
-			});
-		} catch (error) {
-			nodecg.log.error(error);
-		}
-	});
 
 	const fetchPbsReplicant = nodecg.Replicant('fetchPbs');
 	nodecg.listenFor('fetchPbs', async query => {
@@ -41,7 +27,7 @@ module.exports = function (nodecg) {
 
 			const apiResponse = await axios.get(graphUrl, {
 				params: {
-					query: 'query AllPBs {  userCardInformations(season: ' + query.season + ', username: "Djodjino", showEmptyPb: true) {    pbList {      game {        name        groupment      }      time      score    }  }}'
+					query: 'query AllPBs {  userCardInformations(season: ' + query.season + ', username: "' + udRunner + '", showEmptyPb: true) {    pbList {      game {        name        groupment      }      time      score    }  }}'
 				}
 			});
 
@@ -178,8 +164,16 @@ module.exports = function (nodecg) {
 				};
 
 				if ('light' === game.groupment || 'grind' === game.groupment) {
+					let category = game.category;
+					let regex = /\/\/ (.*)/;
+					let found = category.match(regex);
+
+					if (found && found[1]) {
+						category = found[1];
+					}
+
 					gameResult.light = {
-						category: game.category,
+						category: category,
 						bestTime: game.bestTime,
 						middleTime: game.middleTime,
 						fewestTime: game.fewestTime,
@@ -201,26 +195,6 @@ module.exports = function (nodecg) {
 
 		return gameResult;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	const livesplitConnection = nodecg.Replicant('livesplitConnected', {defaultValue: false, persistent: false});
 	var lastData;

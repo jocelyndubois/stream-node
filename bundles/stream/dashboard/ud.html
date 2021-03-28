@@ -5,7 +5,8 @@
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/games.css">
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/replicants.js"></script>
 	<script type="text/javascript" src="js/utils.js"></script>
 </head>
@@ -21,7 +22,6 @@
 		<div class="col-md-6">
 			<label for="gameSelect" class="form-label">Game :</label>
 			<select class="form-control form-select form-select-sm" name="gameSelect" id="gameSelect"></select>
-			<a class="btn btn-twitch" id="sendToTwitch">Twitch</a>
 		</div>
 		<div class="col-6">
 			<label for="gameName" class="form-label">Name</label>
@@ -32,7 +32,7 @@
 			<input disabled type="text" class="form-control" id="gameColor">
 		</div>
 		<div class="col-md-2">
-			<svg id= "gameSvg" data-width="1000" viewBox="0,0,1000,1000" height="75" width="75">
+			<svg id="gameSvg" data-width="1000" viewBox="0,0,1000,1000" height="75" width="75">
 				<path id="gameSvgPath" d="" fill="#FFFFFF"/>
 			</svg>
 		</div>
@@ -103,19 +103,40 @@
 
 	<div class="row">
 		<div class="col-7">
-			<h4>PB</h4>
-			<a class="btn btn-light" id="sendPBLight">Send</a>
-			<a class="btn btn-dark" id="sendPBDark">Send</a>
-			<a class="btn btn-secondary" id="sendPBAgg">Send</a>
-			<a class="btn btn-danger" id="hidePB">Hide</a>
+			<h4>Display PB and category:</h4>
+			<a class="btn btn-light" id="sendPBLight">LIGHT</a>
+			<a class="btn btn-dark" id="sendPBDark">DARK</a>
+			<a class="btn btn-secondary" id="sendPBAgg">BOTH</a>
+			<a class="btn btn-danger" id="hidePB">HIDE</a>
 		</div>
 		<div class="col-4">
 			<h4>Chrono</h4>
-			<a class="btn btn-light" id="startLight"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26"><polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69"/></svg></a>
-			<a class="btn btn-dark" id="startDark"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26"><polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69" fill="#FFFFFF"/></svg></a>
-			<a class="btn btn-secondary" id="startBoth"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26"><polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69" fill="#FFFFFF"/></svg></a>
-			<td><a class="btn btn-danger" data-todo="pause" id="pause"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 36 36"><path d="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26"/></svg></a></td>
-			<a class="btn btn-danger" id="stop"><svg xmlns="http://www.w3.org/2000/svg" width="13px" height="13px" viewBox="0 0 100 100"><path d="M 10 10 H 90 V 90 H 10 L 10 10"/></svg></a>
+			<a class="btn btn-light" id="startLight">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26">
+					<polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69"/>
+				</svg>
+			</a>
+			<a class="btn btn-dark" id="startDark">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 26 26">
+					<polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69" fill="#FFFFFF"/>
+				</svg>
+			</a>
+			<a class="btn btn-warning" data-todo="pause" id="pause">
+				<svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 36 36">
+					<path id="ytp-12" d="M 11 10 L 17 10 L 17 26 L 11 26 M 20 10 L 26 10 L 26 26 L 20 26">
+						<animate id="animation" begin="indefinite" attributeType="XML" attributeName="d" fill="freeze"
+								 from="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26"
+								 to="M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28" dur="0.1s"
+								 keySplines=".4 0 1 1" repeatCount="1"></animate>
+					</path>
+				</svg>
+			</a>
+
+			<a class="btn btn-danger" id="stop">
+				<svg xmlns="http://www.w3.org/2000/svg" width="13px" height="13px" viewBox="0 0 100 100">
+					<path d="M 10 10 H 90 V 90 H 10 L 10 10"/>
+				</svg>
+			</a>
 		</div>
 	</div>
 
@@ -127,7 +148,6 @@
 	const gameSelect = document.querySelector('#gameSelect');
 	const seasonInput = document.querySelector('#seasonInput');
 	const fetchGamesButton = document.querySelector('#fetchGamesButton');
-	const sendToTwitch = document.querySelector('#sendToTwitch');
 
 	const sendPBLight = document.querySelector('#sendPBLight');
 	const sendPBDark = document.querySelector('#sendPBDark');
@@ -136,7 +156,6 @@
 
 	const startLight = document.querySelector('#startLight');
 	const startDark = document.querySelector('#startDark');
-	const startBoth = document.querySelector('#startBoth');
 	const pause = document.querySelector('#pause');
 	const stop = document.querySelector('#stop');
 
@@ -162,17 +181,17 @@
 	const PbDarkScore = document.querySelector('#PbDarkScore');
 	const PbDarkTime = document.querySelector('#PbDarkTime');
 
-	$( document ).ready(function() {
+	let flip = true,
+		pauseSvg = "M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28",
+		playSvg = "M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26",
+		$animation = $('#animation');
+
+	$(document).ready(function () {
 		fetchGamesButton.onclick = () => {
 			nodecg.sendMessage(
 				'fetchGamesList',
 				seasonInput.value
 			);
-		};
-		sendToTwitch.onclick = () => {
-			nodecg.sendMessageToBundle('twitchUpdateChannelInfo', 'nodecg-speedcontrol', {
-				game: game.value
-			});
 		};
 
 		//[CHRONO]
@@ -181,7 +200,7 @@
 				'startTimer',
 				{
 					category: 'light',
-					light : {
+					light: {
 						bestTime: gameMaxTimeLight.dataset.seconds,
 						middleTime: gameMidTimeLight.dataset.seconds,
 						minScore: gameMinScoreLight.value,
@@ -203,29 +222,7 @@
 				'startTimer',
 				{
 					category: 'dark',
-					light : {
-						bestTime: gameMaxTimeLight.dataset.seconds,
-						middleTime: gameMidTimeLight.dataset.seconds,
-						minScore: gameMinScoreLight.value,
-						maxScore: gameMaxScoreLight.value,
-					},
-					dark: {
-						bestTime: gameMaxTimeDark.dataset.seconds,
-						middleTime: gameMidTimeDark.dataset.seconds,
-						minScore: gameMinScoreDark.value,
-						maxScore: gameMaxScoreDark.value,
-					}
-				}
-			);
-
-			nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'starttimer');
-		};
-		startBoth.onclick = () => {
-			nodecg.sendMessage(
-				'startTimer',
-				{
-					category: 'both',
-					light : {
+					light: {
 						bestTime: gameMaxTimeLight.dataset.seconds,
 						middleTime: gameMidTimeLight.dataset.seconds,
 						minScore: gameMinScoreLight.value,
@@ -247,6 +244,7 @@
 
 			nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'reset');
 		};
+
 		pause.onclick = () => {
 			if ('pause' === pause.dataset.todo) {
 				nodecg.sendMessage('pauseTimer');
@@ -254,12 +252,22 @@
 				nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'pause');
 
 				pause.dataset.todo = 'resume';
+
+				$animation.attr({
+					"from": playSvg,
+					"to": pauseSvg
+				}).get(0).beginElement();
 			} else {
 				nodecg.sendMessage('resumeTimer');
 
 				nodecg.sendMessageToBundle('livesplit:sendAction', 'stream', 'resume');
 
 				pause.dataset.todo = 'pause';
+
+				$animation.attr({
+					"from": pauseSvg,
+					"to": playSvg
+				}).get(0).beginElement();
 			}
 		};
 
@@ -302,7 +310,7 @@
 		};
 		sendPBAgg.onclick = () => {
 			let lightScore = parseInt(PbLightScore.value);
-			let darkScore = parseInt(PbDarkScore.value);
+			let darkScore = parseInt(PbDarkScore.value) ?? 0;
 			let lightTime = PbLightTime.value;
 			let darkTime = PbDarkTime.value;
 
@@ -373,7 +381,7 @@
 			if (gameSelect.options) {
 				//First, we clear the old games list.
 				var length = gameSelect.options.length;
-				for (let i = length-1; i >= 0; i--) {
+				for (let i = length - 1; i >= 0; i--) {
 					gameSelect.options[i].remove();
 				}
 			}
@@ -426,15 +434,29 @@
 			gameFewTimeDark.value = new Date(infos.dark.fewestTime * 1000).toISOString().substr(11, 8);
 			gameFewTimeDark.dataset.seconds = infos.dark.fewestTime;
 		});
+
 		fetchPbsReplicant.on('change', (PB) => {
 			if (!PB) {
 				return;
 			}
 
-			PbLightScore.value = PB.light.score;
-			PbLightTime.value = new Date(PB.light.time * 1000).toISOString().substr(11, 8);
-			PbDarkScore.value = PB.dark.score;
-			PbDarkTime.value = new Date(PB.dark.time * 1000).toISOString().substr(11, 8);
+			let lightScore = 0;
+			let lightTime = "99:99:99";
+			if (PB.light && PB.light.score) {
+				lightScore = PB.light.score;
+				lightTime = new Date(PB.light.time * 1000).toISOString().substr(11, 8);
+			}
+			PbLightScore.value = lightScore;
+			PbLightTime.value = lightTime;
+
+			let darkScore = 0;
+			let darkTime = "99:99:99";
+			if (PB.dark && PB.dark.score) {
+				darkScore = PB.dark.score;
+				darkTime = new Date(PB.dark.time * 1000).toISOString().substr(11, 8);
+			}
+			PbDarkScore.value = darkScore;
+			PbDarkTime.value = darkTime;
 		});
 	});
 </script>

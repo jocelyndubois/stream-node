@@ -19,36 +19,11 @@
         "headerColor": "#525F78"
       },
       {
-        "name": "Clips",
-        "title": "Clip",
-        "width": 3,
-        "file": "clips.html",
-        "headerColor": "#525F78",
-        "workspace": "Full page"
-      },
-      {
-        "name": "Backgrounds",
-        "title": "Backgrounds",
-        "width": 3,
-        "file": "backgrounds.html",
-        "headerColor": "#525F78",
-        "workspace": "Full page"
-      },
-      {
-        "name": "OBS",
-        "title": "OBS",
-        "width": 3,
-        "file": "obs.html",
-        "headerColor": "#525F78",
-        "workspace": "EXTERNAL"
-      },
-      {
         "name": "LiveSplit",
         "title": "LiveSplit",
         "width": 3,
         "file": "livesplit.html",
-        "headerColor": "#525F78",
-        "workspace": "EXTERNAL"
+        "headerColor": "#525F78"
       }
     ],
     "graphics": [
@@ -73,11 +48,6 @@
         "height": 814
       },
       {
-        "file": "splits.html",
-        "width": 60,
-        "height": 300
-      },
-      {
         "file": "logo.html",
         "width": 1920,
         "height": 1080
@@ -98,65 +68,15 @@
         "height": 256
       },
       {
-        "file": "background.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
         "file": "card.html",
         "width": 1920,
         "height": 1080
-      },
-      {
-        "file": "clip.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "transition.html",
-        "width": 1920,
-        "height": 1080
-      }
-    ],
-    "assetCategories": [
-      {
-        "name": "images",
-        "title": "images",
-        "allowedTypes": [
-          "png",
-          "jpg"
-        ]
-      },
-      {
-        "name": "background",
-        "title": "background",
-        "allowedTypes": [
-          "png",
-          "jpg"
-        ]
-      },
-      {
-        "name": "clips",
-        "title": "clips",
-        "allowedTypes": [
-          "webm",
-          "mp4",
-          "mov"
-        ]
-      },
-      {
-        "name": "utils",
-        "title": "Utils",
-        "allowedTypes": [
-          "webm"
-        ]
       }
     ]
   },
   "dependencies": {
     "axios": "^0.18.0",
     "bower-npm-resolver": "^0.11.0",
-    "nodecg-utility-obs": "^6.1.7",
     "node-ipc": "^9.1.1"
   }
 }
